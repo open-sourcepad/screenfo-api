@@ -23,7 +23,11 @@ class AuthController < ApplicationController
       render json: {error: "Invalid Email and/or Password"}, status: :unauthorized
     end
   end
-
+  def log_out
+    if current_session.destroy!
+      render_success
+    end
+  end
   private
   def obj_params
     params.require(:user).permit(

@@ -5,6 +5,8 @@ Rails.application.routes.draw do
     collection do
       post :sign_up
       post :log_in
+      delete :log_in
+
     end
   end
 
