@@ -13,6 +13,12 @@ module Auth
       end
     end
 
+    def find_by_valid_token
+      session = Session.where(access_token: @user[:access_token], user_id: @user[:user_id]).first
+      return nil unless session.present? && session.user.present?
+      session.user
+    end
+
     def create_session
       session = Sessions::Processor.new(@user).create
       Sessions::Builder.new(session).show_details

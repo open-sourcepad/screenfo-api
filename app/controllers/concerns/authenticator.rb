@@ -2,7 +2,7 @@ module Authenticator
   extend ActiveSupport::Concern
 
   def current_user
-    @current_user ||= Sessions::Processor.new(request_details).find_by_valid_token
+    @current_user ||= Auth::Processor.new(request_details).find_by_valid_token
   end
 
   def request_details
@@ -13,5 +13,8 @@ module Authenticator
       }
   end
 
+  def authenticate_request
+    fail CommonResponse::ExpiredSessionError unless current_user.present?
+  end
 
 end

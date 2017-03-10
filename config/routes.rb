@@ -8,4 +8,6 @@ Rails.application.routes.draw do
       post :log_in
     end
   end
+  resources :third_party_integration do
+  end
 end
