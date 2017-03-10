@@ -5,12 +5,16 @@ class AuthController < ApplicationController
   def index
     render json: Sessions::Builder.new(current_session).profile
   end
+
   def sign_up
     session = Auth::Processor.new(obj_params).sign_up
-    if session
+    if session.keys.include?(:errors)
+      render json: session, status: :unauthorized
+    else
       render json: session
     end
   end
+
   def log_in
     session = Auth::Processor.new(@user).log_in(obj_params[:password])
     if session

@@ -2,7 +2,11 @@ module Auth
   class Processor < Base
     def sign_up
       @user = User.create(@user)
-      create_session
+      if @user.errors.empty?
+        create_session
+      else
+        {errors: @user.errors.full_messages.join(". ")}
+      end
     end
 
     def log_in password
