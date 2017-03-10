@@ -1,6 +1,10 @@
 class AuthController < ApplicationController
   skip_before_action :authenticate_request
   before_action :find_user_via_email, only: :log_in
+
+  def index
+    render json: Sessions::Builder.new(current_session).profile
+  end
   def sign_up
     session = Auth::Processor.new(obj_params).sign_up
     if session

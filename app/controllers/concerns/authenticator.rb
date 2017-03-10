@@ -13,6 +13,10 @@ module Authenticator
       }
   end
 
+  def current_session
+    @session ||= Sessions::Processor.new(request_details).find_by_valid_token
+  end
+
   def authenticate_request
     fail CommonResponse::ExpiredSessionError unless current_user.present?
   end

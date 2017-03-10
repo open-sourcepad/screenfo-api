@@ -3,9 +3,15 @@ module Sessions
     def initialize user
       @user = user
     end
-    
+
     def create
       session = Session.create(user_id: @user.id, access_token: generate_access_token)
+      session
+    end
+
+    def find_by_valid_token
+      session = Session.where(access_token: @user[:access_token], user_id: @user[:user_id]).first
+      return nil unless session.present? && session.user.present?
       session
     end
 
