@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :auth do
     collection do
       post :sign_up
+      post :log_in
     end
   end
 end
