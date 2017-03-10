@@ -21,7 +21,4 @@ staging:
   host: localhost
 
 production:
-  adapter: postgresql
-  encoding: utf8
-  database: school_insider_prod
-  host: localhost
+  url: ENV['DATABASE_URL']
