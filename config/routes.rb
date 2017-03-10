@@ -14,7 +14,12 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :messages, only: [:create, :get]
+  resources :messages, only: [:create]
+  resources :users do
+    collection do
+      get :messages
+    end
+  end
 
   get "*path" => "application#index"
   root to: "application#index"
