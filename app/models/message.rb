@@ -7,4 +7,8 @@ class Message < ApplicationRecord
 
   scope :latest, -> { order(created_at: :desc) }
 
+  def broadcasted!
+    update_attribute(:broadcasted, true)
+  end
+
 end

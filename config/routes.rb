@@ -16,7 +16,10 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :messages, only: [:create, :index]
+  resources :messages, only: [:create, :index] do
+    post :broadcasted
+  end
+
   resources :users do
     collection do
       get :messages

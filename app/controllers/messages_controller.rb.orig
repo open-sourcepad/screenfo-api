@@ -11,6 +11,7 @@ class MessagesController < ApplicationController
     end
   end
 
+<<<<<<< Updated upstream
   def index
     message = Message.order("created_at DESC").first
     if message.present?
@@ -18,11 +19,11 @@ class MessagesController < ApplicationController
     else
       render json: {}
     end
-  end
-
+=======
   def broadcasted
     @message.broadcasted!
     render_success_with_object @message
+>>>>>>> Stashed changes
   end
 
   private
