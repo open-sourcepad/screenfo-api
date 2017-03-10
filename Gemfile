@@ -15,6 +15,7 @@ gem 'rollbar'
 gem 'friendly_id', '~> 5.1.0'
 gem 'httparty'
 gem 'birthday', '~> 0.3.0'
+gem 'uglifier'
 # gem "exception_notifier"
 gem 'whenever'
 
