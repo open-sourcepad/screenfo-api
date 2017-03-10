@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   resources :auth do
     get :index
@@ -8,8 +7,12 @@ Rails.application.routes.draw do
       post :log_in
     end
   end
+
   resources :third_party_integration do
   end
+
+  resources :messages, only: [:create, :get]
+
   get "*path" => "application#index"
   root to: "application#index"
 end
