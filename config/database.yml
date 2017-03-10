@@ -1,0 +1,27 @@
+development:
+  adapter: postgresql
+  encoding: utf8
+  database: screenfo_api_development
+  username: karlpotenciano
+  password:
+  host: localhost
+
+test:
+  adapter: postgresql
+  encoding: utf8
+  database: screenfo_api_development
+  username: karlpotenciano
+  password:
+  host: localhost
+
+staging:
+  adapter: postgresql
+  encoding: utf8
+  database: school_insider_stag
+  host: localhost
+
+production:
+  adapter: postgresql
+  encoding: utf8
+  database: school_insider_prod
+  host: localhost
