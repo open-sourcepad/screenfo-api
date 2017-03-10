@@ -15,9 +15,10 @@ module ThirdPartyIntegration
 
     private
     def integrate_n24
-      response = HttpService::Base.new(N24_LOGIN).post(@params.reject{|x| x == :third_party})
+      params = {"email"=> @params["username"], "password"=> @params["password"]}
+      response = HttpService::Base.new(N24_LOGIN).post(params)
       if response["status"] == "200" || response["status"] == 200
-        @user.update_attributes(n24_access_token: response["body"]["token"])
+        hello = @user.update_attributes(n24_access_token: response["body"]["token"])
       end
     end
   end
