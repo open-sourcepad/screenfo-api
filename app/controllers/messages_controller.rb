@@ -12,7 +12,7 @@ class MessagesController < ApplicationController
   def index
     message = Message.order("created_at DESC").first
     if message.present?
-      render json: {message: "#{message.user.email} -  #{message.user.content}"}
+      render json: {message: "#{message.user.email} -  #{message.content}"}
     else
       render json: {}
     end
