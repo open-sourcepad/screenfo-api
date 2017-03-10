@@ -2,7 +2,7 @@ module HttpService
   class Base
     def initialize url, token=nil
       @url = URI.parse(url)
-      @token = nil
+      @token = token
       prepare_http_object
     end
 

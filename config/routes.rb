@@ -9,6 +9,9 @@ Rails.application.routes.draw do
   end
 
   resources :third_party_integration do
+    collection do
+      get :get_n24_tasks
+    end
   end
 
   resources :messages, only: [:create, :get]
